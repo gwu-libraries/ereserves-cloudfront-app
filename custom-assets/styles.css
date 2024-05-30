@@ -1,3 +1,31 @@
+/* variables */
+
+:root {
+  --gw-white: #fff;
+  --gw-light-blue: #0073aa;
+  --gw-dark-blue: #033c5a;
+  --gw-dark-grey: #444;
+  --gw-hover: #a75523;
+  --gw-buff: #aa9868;
+  --gw-utility-buff: #e3dccc;
+  --gw-hover-buff: #d9d0bb;
+  --box-shadow: rgba(100, 100, 111, 0.2);
+}
+
+/* gibson font */
+
+@font-face {
+  font-family: "Gibson";
+  src:
+    url("GibsonVF-Regular.woff2") format("woff2"),
+    url("GibsonVF-Regular.woff") format("woff");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* shared styles */
+
 html {
   height: 100%;
 }
@@ -8,6 +36,191 @@ body {
   justify-content: center;
   min-height: 100%;
   margin: 0;
+  background-color: #eeeeee;
+  font-family: "Gibson", "Helvetica", sans-serif;
+  font-weight: 200;
+  color: var(--gw-dark-grey);
+}
+
+h1 {
+  margin: 0;
+  color: var(--gw-white);
+  font-weight: 200;
+  font-size: 1.8em;
+}
+
+b {
+  font-weight: 400;
+}
+
+/* welcome page */
+
+.container {
+  margin-top: -15vh;
+}
+
+.card {
+  width: 40vw;
+  min-width: 500px;
+  background-color: var(--gw-white);
+  box-shadow: var(--box-shadow) 0px 7px 29px 0px;
+}
+
+@media (orientation: portrait) {
+  .card {
+    width: 80vw;
+    min-width: 300px;
+  }
+}
+
+.card-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8em;
+  background-color: var(--gw-dark-blue);
+}
+
+.img-container {
+  width: 3em;
+}
+
+img#gw-logo {
+  width: 100%;
+  max-width: 3em;
+  height: auto;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+}
+.card p {
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.card p,
+.loader {
+  margin: 1em 0;
+}
+
+/* loader */
+
+.loader {
+  width: 60px;
+  aspect-ratio: 4;
+  --_g: no-repeat radial-gradient(circle closest-side,var(--gw-buff) 90%,#0000);
+  background: 
+    var(--_g) 0%   50%,
+    var(--_g) 50%  50%,
+    var(--_g) 100% 50%;
+  background-size: calc(100%/3) 100%;
+  animation: l7 1s infinite linear;
+}
+
+@keyframes l7 {
+    33%{background-size:calc(100%/3) 0%  ,calc(100%/3) 100%,calc(100%/3) 100%}
+    50%{background-size:calc(100%/3) 100%,calc(100%/3) 0%  ,calc(100%/3) 100%}
+    66%{background-size:calc(100%/3) 100%,calc(100%/3) 100%,calc(100%/3) 0%  }
+}
+
+/* links page */
+
+.list-container {
+  width: 70vw;
+  margin: 2em 0;
+  background-color: var(--gw-white);
+  box-shadow: 0 0 20px var(--box-shadow);
+}
+
+@media (orientation: portrait) {
+  .list-container {
+    width: 90vw;
+  }
+}
+
+.list-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.2em 0.4em;
+  background-color: var(--gw-dark-blue);
+}
+
+@media (max-width: 1000px) {
+  .list-header {
+    flex-direction: column;
+  }
+}
+
+.heading-wrap {
+  display: flex;
+  flex-grow: 1;
+  justify-content: initial;
+  align-items: center;
+  padding: 0 0.4em;
+}
+
+.heading-wrap h1 {
+  padding: 0 0.4em;
+}
+
+#menu-container {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+#menu-container select {
+  min-width: 25em;
+  margin: 0.2em 0 0.2em 0.2em;
+  padding: 0.5em;
+  border: 1px solid var(--gw-dark-blue);
+  background-color: var(--gw-white);
+}
+
+#menu-container label {
+  color: var(--gw-white);
+}
+
+#library-select-container,
+#instructor-select-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+@media (orientation: portrait) {
+  #library-select-container,
+  #instructor-select-container {
+    flex-direction: column;
+  }
+}
+
+#table-container,
+#table-container table {
+  width: 100%;
+  margin: 0;
+}
+
+#table-container table a {
+  color: var(--gw-light-blue);
+}
+
+#table-container table a:hover,
+#table-container table a:focus {
+  color: var(--gw-hover);
+}
+
+#table-container table thead {
+  background-color: var(--gw-hover-buff);
 }
 
 table {
@@ -15,20 +228,18 @@ table {
   margin: 25px 0;
   font-size: 0.9em;
   font-family: sans-serif;
-  min-width: 400px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-}
-tbody tr {
-  border-bottom: 1px solid #dddddd;
+  min-width: auto;
+  table-layout: fixed;
 }
 
 tbody tr:nth-of-type(even) {
   background-color: #f3f3f3;
 }
 
-tbody tr:last-of-type {
-  border-bottom: 2px solid #009879;
-}
 th, td {
   padding: 15px;
+}
+
+td {
+  word-wrap: break-word;
 }

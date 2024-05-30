@@ -2,13 +2,26 @@
 Copyright 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 SPDX-License-Identifier: MIT-0
 -->
-<html>
+<!DOCTYPE html>
   <head>
     <link rel="stylesheet" href="styles.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="download.js"></script>
   </head>
   <body>
-    <p id="message"><b>Welcome</b>, your download will begin shortly!</p>
+    <div class="container">
+      <div class="card">
+        <div class="card-header">
+          <div class="img-container">
+            <img id="gw-logo" src="gw-logo.png"/>
+          </div>
+          <h1>E-Reserves Download</h1>
+        </div>
+        <div class="card-body">
+          <p id="message">Welcome, your download will begin shortly!</p>
+          <div class="loader"></div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
