@@ -3,8 +3,10 @@ window.onload = (event) => {
     const downloadTargetParams = new URLSearchParams(downloadTargetParamsString);
     try {
         const filePath = downloadTargetParams.get("file");
-        document.getElementById("message").innerHTML = document.getElementById("message").innerHTML.replace("download", `download of ${filePath}`);
-        window.location.assign(filePath);
+        if (filePath) {
+            document.getElementById("message").innerHTML = document.getElementById("message").innerHTML.replace("your file", `${filePath}`);
+            window.location.assign(filePath);
+        }
     } catch (error) {
         console.error(error);
     }

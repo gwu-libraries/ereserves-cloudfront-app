@@ -5,6 +5,7 @@
   --gw-light-blue: #0073aa;
   --gw-dark-blue: #033c5a;
   --gw-dark-grey: #444;
+  --light-grey: #666;
   --gw-hover: #a75523;
   --gw-buff: #aa9868;
   --gw-utility-buff: #e3dccc;
@@ -99,22 +100,38 @@ img#gw-logo {
   justify-content: center;
   padding: 1em;
 }
+
+.card h2 {
+  font-weight: 200;
+  font-size: 1.6em;
+}
+
 .card p {
   text-align: center;
   font-size: 1.2em;
 }
 
-.card p,
-.loader {
-  margin: 1em 0;
+.card #url {
+  color: var(--gw-buff);
+  font-size: 1.2em;
+}
+
+.card #url p {
+  margin: 0 0 0.5em 0;
+}
+
+.card h2,
+.card p {
+  margin: 0.5em 0;
 }
 
 /* loader */
 
 .loader {
   width: 60px;
+  margin: 1em 0;
   aspect-ratio: 4;
-  --_g: no-repeat radial-gradient(circle closest-side,var(--gw-buff) 90%,#0000);
+  --_g: no-repeat radial-gradient(circle closest-side,var(--gw-dark-blue) 90%,#0000);
   background: 
     var(--_g) 0%   50%,
     var(--_g) 50%  50%,
@@ -181,8 +198,9 @@ img#gw-logo {
   min-width: 25em;
   margin: 0.2em 0 0.2em 0.2em;
   padding: 0.5em;
-  border: 1px solid var(--gw-dark-blue);
+  border: none;
   background-color: var(--gw-white);
+  color: var(--gw-dark-grey);
 }
 
 #menu-container label {
