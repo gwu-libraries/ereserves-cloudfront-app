@@ -1,6 +1,6 @@
 async function loadFilesList() {
     try {
-        const response = await fetch(`${window.location.origin}/custom-assets/ereserves_files.json`);
+        const response = await fetch(`${window.location.origin}/ereserves_files.json`);
         const filesList = await response.json();
         return filesList.reduce( (map, item) => {
             const pathArray = item.split("/");
