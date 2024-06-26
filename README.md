@@ -20,9 +20,31 @@ For architecture details, see the [source repository](https://github.com/aws-sam
   - `UserPoolArn`: ARN of an existing Cognito pool
   - `UserPoolClientId` and `UserPoolClientSecret`: when using an existing pool, it's necessary to provide these values, too, which should refer to pre-existing user pool client (see `App Integrations` under the user pool settings in the AWS web console) or one created for this deployment.
 
-The following settings should be set regardless of whether the deployment uses existing resources or creates new ones:
+- The following settings should be set regardless of whether the deployment uses existing resources or creates new ones:
   - `CreateCloudFrontDistribution`: `true`
   - `EnableSPAMode`: `false`
+
+- The S3 bucket needs a policy following this template:
+  ```
+  "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity {Your Origin Access Identity}"
+            },
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::{Your S3 ARN}/*"
+        },
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity {Your Origin Access Identity}"
+            },
+            "Action": "s3:ListBucket",
+            "Resource": "arn:aws:s3:::{Your S3 ARN}"
+        }
+    ]
+  ```
 
 ### Customization
 
