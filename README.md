@@ -12,6 +12,18 @@ This repository is a fork of the AWS sample [cloudfront-authorization-at-edge](h
 
 For architecture details, see the [source repository](https://github.com/aws-samples/cloudfront-authorization-at-edge/tree/master?tab=readme-ov-file#deploying-the-solution).
 
+### Deployment Details
+
+- When deploying for use with existing resources (an S3 bucket and/or a Cognito user pool), the following parameters are required in the CloudFormation console:
+  - `OriginAccessIdentity`: this ID will be referenced in the S3 policy granting access to the bucket from the CountFront app.
+  - `S3OriginDomainName`: the URI of the s3 bucket, in the form `<bucket-name>.s3.<region-name>.amazonaws.com`
+  - `UserPoolArn`: ARN of an existing Cognito pool
+  - `UserPoolClientId` and `UserPoolClientSecret`: when using an existing pool, it's necessary to provide these values, too, which should refer to pre-existing user pool client (see `App Integrations` under the user pool settings in the AWS web console) or one created for this deployment.
+
+The following settings should be set regardless of whether the deployment uses existing resources or creates new ones:
+  - `CreateCloudFrontDistribution`: `true`
+  - `EnableSPAMode`: `false`
+
 ### Customization
 
 The `custom-assets` folder contains web assets to be served from the S3 bucket. These should be placed in the root folder of the bucket. 
